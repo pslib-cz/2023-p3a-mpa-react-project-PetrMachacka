@@ -1,0 +1,51 @@
+html > *{
+    margin: 0;
+}
+
+.line {
+
+    display: inline-block;
+    padding: 0.5em;
+}
+
+.Player1{
+    background-color: red;
+}
+
+.Player2{
+    background-color: blue;
+}
+
+.Horizontal {
+    width: 7em;
+    margin: 0.5em 0 ;
+}
+.Vertical {
+    height: 7em;
+    margin: 0 0.5em; 
+}
+
+.Dot{
+    background-color: black;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+}
+
+.line:hover {
+    background-color: rgb(226, 115, 115);
+}
+
+.Box {
+    width: 6em;
+    height: 6em;
+    padding: 1em;
+    display: inline-block;
+}
+
+@media (max-width: 1200px) {
+    html{
+        font-size: 0.6em;
+    }
+}
