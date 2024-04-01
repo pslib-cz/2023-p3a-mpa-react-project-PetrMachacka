@@ -1,22 +1,53 @@
-import React, { createContext, useState, ReactNode, useEffect } from 'react';
+import React, { createContext, useReducer, ReactNode, useEffect, Dispatch } from 'react';
 
-export const PlayerContext = createContext({ currentPlayer: 1, switchPlayer: () => {} });
+type PlayerState = {
+    currentPlayer: number;
+    playerOneScore: number;
+    playerTwoScore: number;
+};
+
+type PlayerAction =
+    | { type: 'switchPlayer' }
+    | { type: 'incrementPlayerOneScore' }
+    | { type: 'incrementPlayerTwoScore' }
+    | { type: 'resetScore' };
+
+const initialState: PlayerState = {
+    currentPlayer: 1,
+    playerOneScore: 0,
+    playerTwoScore: 0,
+};
+
+function playerReducer(state: PlayerState, action: PlayerAction): PlayerState {
+    switch (action.type) {
+        case 'switchPlayer':
+            return { ...state, currentPlayer: state.currentPlayer === 1 ? 2 : 1 };
+        case 'incrementPlayerOneScore':
+            return { ...state, playerOneScore: state.playerOneScore + 1 };
+        case 'incrementPlayerTwoScore':
+            return { ...state, playerTwoScore: state.playerTwoScore + 1 };
+        case 'resetScore':
+            return { ...state, playerOneScore: 0, playerTwoScore: 0 };
+        default:
+            return state;
+    }
+}
+
+export const PlayerContext = createContext({ Playerstate: initialState, Playerdispatch: {} as Dispatch<PlayerAction> });
 
 const PlayerProvider = ({ children }: { children: ReactNode }) => {
-    const [currentPlayer, setCurrentPlayer] = useState(1); // 1 for Player One, 2 for Player Two
-    const [playerOneScore, setPlayerOneScore] = useState(0);
-    const [playerTwoScore, setPlayerTwoScore] = useState(0);
+    const [Playerstate, Playerdispatch] = useReducer(playerReducer, initialState);
+
     useEffect(() => {
-        console.log(`Current Player: ${currentPlayer}`);
-    }, [currentPlayer]);
+        console.log(`Player One Score: ${Playerstate.playerOneScore}`);
+    }, [Playerstate.playerOneScore, Playerstate.playerTwoScore]);
 
-    const switchPlayer = () => {
-        setCurrentPlayer(currentPlayer === 1 ? 2 : 1);
-    };
-
+    useEffect(() => {
+        console.log(`Current Player: ${Playerstate.currentPlayer}`);
+    }, [Playerstate.currentPlayer]);
 
     return (
-        <PlayerContext.Provider value={{ currentPlayer, switchPlayer }}>
+        <PlayerContext.Provider value={{ Playerstate, Playerdispatch }}>
             {children}
         </PlayerContext.Provider>
     );

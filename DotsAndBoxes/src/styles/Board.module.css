@@ -1,30 +1,12 @@
 html > *{
     margin: 0;
 }
-
-.line {
-
-    display: inline-block;
-    padding: 0.5em;
+html {
+    font-size: 0.8em;
 }
-
-.Player1{
-    background-color: red;
+.nice{
+    background-color: aqua;
 }
-
-.Player2{
-    background-color: blue;
-}
-
-.Horizontal {
-    width: 7em;
-    margin: 0.5em 0 ;
-}
-.Vertical {
-    height: 7em;
-    margin: 0 0.5em; 
-}
-
 .Dot{
     background-color: black;
     border-radius: 50%;
@@ -33,19 +15,59 @@ html > *{
     display: inline-block;
 }
 
-.line:hover {
+.line {
+
+    display: inline-block;
+    padding: 0.5em;
+}
+
+.Horizontal {
+    width: 6em;
+    margin: 0.5em 0 ;
+}
+.Vertical {
+    height: 6em;
+    margin: 0 0.5em; 
+}
+/*Player 1 is red, Player 2 is blue*/
+.Player1{
+    background-color: red;
+}
+
+.Player2{
+    background-color: blue;
+}
+.line1:hover{
     background-color: rgb(226, 115, 115);
 }
 
+.line2:hover {
+    background-color: rgb(115, 115, 226);
+}
+
 .Box {
-    width: 6em;
-    height: 6em;
+    width: 5em;
+    height: 5em;
     padding: 1em;
     display: inline-block;
 }
 
+.Board{
+    display: block;
+    justify-content: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2em;
+    line-height: 0;
+}
+
 @media (max-width: 1200px) {
-    html{
+    .Board{
         font-size: 0.6em;
+    }
+}
+@media (max-width: 700px) {
+    .Board{
+        font-size: 0.3em;
     }
 }
