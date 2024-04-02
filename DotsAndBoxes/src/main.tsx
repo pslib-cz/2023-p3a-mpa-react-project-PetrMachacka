@@ -9,10 +9,10 @@ import PlayerProvider from './Providers/PlayerProvider.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <PlayerProvider>
       <Provider>
-        <App/>
+        <PlayerProvider>
+          <App/>
+        </PlayerProvider>
       </Provider>
-    </PlayerProvider>
   </React.StrictMode>,
 )

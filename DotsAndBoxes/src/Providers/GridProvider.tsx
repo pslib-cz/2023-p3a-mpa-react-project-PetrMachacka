@@ -40,6 +40,5 @@ export const Provider = ({ children }: { children: ReactNode }) => {
         console.log(state.items);
     }, [state.items])
 
-
     return <ListContext.Provider value={{ state, dispatch, setSize , size}}>{children}</ListContext.Provider>;
 };

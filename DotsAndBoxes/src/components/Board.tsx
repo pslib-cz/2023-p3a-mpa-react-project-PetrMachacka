@@ -2,7 +2,8 @@ import { Line } from "./Line";
 import { Block } from "./Block";
 import { useState, useContext } from "react";
 import BoardStyle from "../styles/Board.module.css";
-import { ListContext } from '../Providers/GridProvider';
+import { ListContext } from '../Providers/GridProvider'
+import Bot from "./Bot";
 
 export const Board = () => {
     const { size } = useContext(ListContext); 
@@ -11,6 +12,7 @@ export const Board = () => {
     
     return (
         <div className={BoardStyle.Board}>
+            <Bot />
             {Array.from({ length: Size * 2 + 1 }, (_, y) => (
                 <div key={y}>
                     {Boolean(y % 2) && Array.from({ length: Size + 1 }, (_, x) => (

@@ -38,7 +38,7 @@ export const PlayerContext = createContext({ Playerstate: initialState, Playerdi
 const PlayerProvider = ({ children }: { children: ReactNode }) => {
     const [Playerstate, Playerdispatch] = useReducer(playerReducer, initialState);
 
-    useEffect(() => {
+    useEffect(() => {  
         console.log(`Player One Score: ${Playerstate.playerOneScore}`);
     }, [Playerstate.playerOneScore, Playerstate.playerTwoScore]);
 
