@@ -3,16 +3,17 @@ import { Block } from "./Block";
 import { useState, useContext } from "react";
 import BoardStyle from "../styles/Board.module.css";
 import { ListContext } from '../Providers/GridProvider'
+import { PlayerContext } from '../Providers/PlayerProvider'
 import Bot from "./Bot";
 
 export const Board = () => {
     const { size } = useContext(ListContext); 
+    const { PlayerState } = useContext(PlayerContext); 
     const Size = size;
 
     
     return (
         <div className={BoardStyle.Board}>
-            <Bot />
             {Array.from({ length: Size * 2 + 1 }, (_, y) => (
                 <div key={y}>
                     {Boolean(y % 2) && Array.from({ length: Size + 1 }, (_, x) => (
@@ -30,6 +31,10 @@ export const Board = () => {
                     ))}
                 </div>
             ))}
+            if(PlayerState.currentPlayer === 2)
+            {
+                <Bot/>
+            }
         </div>
     );
 }
