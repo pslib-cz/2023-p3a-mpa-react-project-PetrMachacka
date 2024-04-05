@@ -16,11 +16,18 @@ html {
 }
 
 .line {
-
     display: inline-block;
     padding: 0.5em;
+    position: relative;
 }
-
+.line::after {
+    content: "";
+    position: absolute;
+    top: -15px;
+    bottom: -15px;
+    left: -15px;
+    right: -15px;
+}
 .Horizontal {
     width: 6em;
     margin: 0.5em 0 ;

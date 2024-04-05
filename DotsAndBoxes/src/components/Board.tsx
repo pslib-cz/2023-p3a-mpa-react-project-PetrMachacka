@@ -31,10 +31,7 @@ export const Board = () => {
                     ))}
                 </div>
             ))}
-            if(PlayerState.currentPlayer === 2)
-            {
-                <Bot/>
-            }
+
         </div>
     );
 }
