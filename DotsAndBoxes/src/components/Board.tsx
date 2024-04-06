@@ -3,12 +3,10 @@ import { Block } from "./Block";
 import { useState, useContext } from "react";
 import BoardStyle from "../styles/Board.module.css";
 import { ListContext } from '../Providers/GridProvider'
-import { PlayerContext } from '../Providers/PlayerProvider'
 import Bot from "./Bot";
 
 export const Board = () => {
     const { size } = useContext(ListContext); 
-    const { PlayerState } = useContext(PlayerContext); 
     const Size = size;
 
     
@@ -31,7 +29,7 @@ export const Board = () => {
                     ))}
                 </div>
             ))}
-
+            <Bot />
         </div>
     );
 }

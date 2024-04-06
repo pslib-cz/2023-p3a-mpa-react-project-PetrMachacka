@@ -13,12 +13,11 @@ export const Block = ({ x, y }: { x: number, y: number }) => {
         {
             if(closed === 0){
                 if(Playerstate.currentPlayer === 1) {
-                    playerDispatch({ type: 'incrementPlayerTwoScore' });
-                } else {
                     playerDispatch({ type: 'incrementPlayerOneScore' });
+                } else {
+                    playerDispatch({ type: 'incrementPlayerTwoScore' });
                 }
                 setClosed(Playerstate.currentPlayer);
-                playerDispatch({ type: 'switchPlayer' });
             }
         }
         else
@@ -31,11 +30,11 @@ export const Block = ({ x, y }: { x: number, y: number }) => {
 
     if (closed === 1) 
     {
-        blockClassName = BoardStyle.Player2;
+        blockClassName = BoardStyle.Player1;
     }
     if (closed === 2) 
     {
-        blockClassName = BoardStyle.Player1;
+        blockClassName = BoardStyle.Player2;
     }
     return (
         <div className={`${BoardStyle.Box} ${blockClassName}`}></div>

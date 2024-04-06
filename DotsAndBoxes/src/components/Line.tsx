@@ -7,8 +7,10 @@ export const Line = ({ y, x, direction }: { y: number, x: number, direction: boo
     const { state, dispatch } = useContext(ListContext);
     const { Playerstate, Playerdispatch: playerDispatch } = useContext(PlayerContext);
     const BlockComplete = (items: number[][], y: number, x: number) => {
-        console.log(items[y][x] + items[y][x + 1] + items[y + 1][x] + items[y - 1][x])
-        if (items[y][x] != 0 && items[y][x + 1] != 0 && items[y + 1][x] != 0 && items[y - 1][x]!= 0) { 
+        var sides = Number(items[y][x] > 0) + Number(items[y][x + 1] > 0) + Number(items[y + 1][x] > 0) + Number(items[y - 1][x] > 0);
+        /*console.log(items[y][x] + "" + items[y][x + 1] + "" + items[y + 1][x] + "" + items[y - 1][x])
+        console.log(sides);*/
+        if (sides === 3) { 
             return true;
         }
         else{
@@ -17,13 +19,16 @@ export const Line = ({ y, x, direction }: { y: number, x: number, direction: boo
     }
     const CheckCompleted = (items: number[][], y: number, x: number, direction: boolean) => {
         if(direction){
-            if(BlockComplete(items, y, x) && BlockComplete(items, y, x)){
+            if(y > 0 && BlockComplete(items, y - 1, x)){
+                return true;
+            }
+            if(y < items.length - 1 && BlockComplete(items, y + 1, x)){
                 return true;
             }
             return false;
         }
         else{
-            if(BlockComplete(items, y, x) && BlockComplete(items, y, x + 1)){
+            if(BlockComplete(items, y, x) || BlockComplete(items, y, x - 1)){
                 return true;
             }
             return false;
@@ -35,8 +40,9 @@ export const Line = ({ y, x, direction }: { y: number, x: number, direction: boo
         {
             dispatch({ type: "addToGrid", y, x, player: Playerstate.currentPlayer });
             const completesBlock = CheckCompleted(state.items, y, x, direction);
-            console.log(completesBlock);
-            playerDispatch({ type: 'switchPlayer' });
+            if (!completesBlock) {
+                playerDispatch({ type: 'switchPlayer' });
+            }
         }
 
     };

@@ -1,7 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { ListContext } from '../Providers/GridProvider';
 import { PlayerContext } from '../Providers/PlayerProvider';
-import BoardStyle from "../styles/Board.module.css"
 
 const Bot = () => {
     const { state, dispatch, size } = useContext(ListContext);
@@ -27,10 +26,9 @@ const Bot = () => {
                 }
                 BotY++;
             }
-            //console.log(bot);
             let threes = [];
             let smallest = Infinity;
-            let smallestIndices = [];
+            let smallestIndices: {i: number, j: number}[] = [];
 
             for(let i = 0; i < bot.length; i++) {
                 for(let j = 0; j < bot[i].length; j++) {
@@ -46,13 +44,9 @@ const Bot = () => {
                 }
             }
 
-            /*console.log("Threes: ", threes);
-            console.log("Smallest: ", smallest, " at indices: ", smallestIndices);*/
-
             if(threes.length > 0) {
                 let randomIndex = Math.floor(Math.random() * threes.length);
                 let {i, j} = threes[randomIndex];
-                console.log("i: ", i, " j: ", j);
                 let BlockY = i * 2 + 1;
                 if(!bot[i][j].includes("L")) {
                     dispatch({ type: "addToGrid", y: BlockY, x: j, player: Playerstate.currentPlayer });
@@ -66,27 +60,60 @@ const Bot = () => {
                 if(!bot[i][j].includes("T")) {
                     dispatch({ type: "addToGrid", y: BlockY - 1, x: j, player: Playerstate.currentPlayer });
                 }
-            }else {
+            }
+            else {
                 let randomIndex = Math.floor(Math.random() * smallestIndices.length);
                 let {i, j} = smallestIndices[randomIndex];
-                console.log("i: ", i, " j: ", j);
                 let BlockY = i * 2 + 1;
-                if(!bot[i][j].includes("L")) {
-                    dispatch({ type: "addToGrid", y: BlockY, x: j, player: Playerstate.currentPlayer });
+
+                let letters = ["L", "R", "B", "T"];
+                let remainingLetters = letters.filter(letter => !bot[i][j].includes(letter));
+
+                // Find the side that, when filled, would result in a block with the fewest sides filled
+                let minSides = Infinity;
+                let chosenLetter = null;
+                for (let letter of remainingLetters) {
+                    let sides = 0;
+                    switch(letter) {
+                        case "L":
+                            if (j > 0) sides = bot[i][j - 1].length;
+                            break;
+                        case "R":
+                            if (j < bot[i].length - 1) sides = bot[i][j + 1].length;
+                            break;
+                        case "B":
+                            if (i < bot.length - 1) sides = bot[i + 1][j].length;
+                            break;
+                        case "T":
+                            if (i > 0) sides = bot[i - 1][j].length;
+                            break;
+                    }
+                    if (sides < minSides) {
+                        minSides = sides;
+                        chosenLetter = letter;
+                    }
                 }
-                else if(!bot[i][j].includes("R")) {
-                    dispatch({ type: "addToGrid", y: BlockY, x: j + 1, player: Playerstate.currentPlayer });
+
+                // Fill the chosen side
+                switch(chosenLetter) {
+                    case "L":
+                        dispatch({ type: "addToGrid", y: BlockY, x: j, player: Playerstate.currentPlayer });
+                        break;
+                    case "R":
+                        dispatch({ type: "addToGrid", y: BlockY, x: j + 1, player: Playerstate.currentPlayer });
+                        break;
+                    case "B":
+                        dispatch({ type: "addToGrid", y: BlockY + 1, x: j, player: Playerstate.currentPlayer });
+                        break;
+                    case "T":
+                        dispatch({ type: "addToGrid", y: BlockY - 1, x: j, player: Playerstate.currentPlayer });
+                        break;
                 }
-                else if(!bot[i][j].includes("B")) {
-                    dispatch({ type: "addToGrid", y: BlockY + 1, x: j, player: Playerstate.currentPlayer });
-                }
-                else if(!bot[i][j].includes("T")) {
-                    dispatch({ type: "addToGrid", y: BlockY - 1, x: j, player: Playerstate.currentPlayer });
-                }
+
+                playerDispatch({ type: 'switchPlayer' });
             }
-            playerDispatch({ type: 'switchPlayer' });
         }
-    }, [Playerstate.currentPlayer]);
+    }, [state.items]);
 
     return null; 
 };

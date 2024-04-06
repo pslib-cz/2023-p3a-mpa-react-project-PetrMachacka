@@ -6,7 +6,7 @@ export type Grid = {
 };
 const createInitialState = (size: number): Grid => ({ items: Array.from({ length: size * 2 + 1 }, () => Array(size + 1).fill(0)) });
 
-const initialState = createInitialState(6);
+const initialState = createInitialState(5);
 
 export type GridAction =
     | { type: "addToGrid"; y: number; x: number; player: number}
@@ -36,7 +36,7 @@ export const ListContext = React.createContext<{ state: Grid; dispatch: Dispatch
 
 
 export const Provider = ({ children }: { children: ReactNode }) => {
-    const [size, setSize] = useState(6);
+    const [size, setSize] = useState(5);
     const [state, dispatch] = useReducer(reducer, initialState);
     useEffect(() => {
         //console.log(state.items);
