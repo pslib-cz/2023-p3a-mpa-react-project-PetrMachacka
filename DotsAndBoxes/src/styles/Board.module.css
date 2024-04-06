@@ -23,10 +23,10 @@ html {
 .line::after {
     content: "";
     position: absolute;
-    top: -15px;
-    bottom: -15px;
-    left: -15px;
-    right: -15px;
+    top: -1em;
+    bottom: -1em;
+    left: -1em;
+    right: -1em;
 }
 .Horizontal {
     width: 6em;
@@ -75,6 +75,6 @@ html {
 }
 @media (max-width: 700px) {
     .Board{
-        font-size: 0.3em;
+        font-size: 0.5em;
     }
 }
