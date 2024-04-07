@@ -1,9 +1,7 @@
 html > *{
     margin: 0;
 }
-html {
-    font-size: 0.8em;
-}
+
 .nice{
     background-color: aqua;
 }
@@ -23,10 +21,10 @@ html {
 .line::after {
     content: "";
     position: absolute;
-    top: -1em;
-    bottom: -1em;
-    left: -1em;
-    right: -1em;
+    top: -1.5em;
+    bottom: -1.5em;
+    left: -1.5em;
+    right: -1.5em;
 }
 .Horizontal {
     width: 6em;
@@ -37,6 +35,7 @@ html {
     margin: 0 0.5em; 
 }
 /*Player 1 is red, Player 2 is blue*/
+
 .Player1{
     background-color: red;
 }
@@ -60,21 +59,23 @@ html {
 }
 
 .Board{
-    display: block;
-    justify-content: center;
+    line-height: 0;
+    font-size: 2em;
+}
+.BoardPadding{
+    display: inline-block;
+    width: fit-content;
     background-color: white;
     border-radius: 20px;
-    padding: 2em;
-    line-height: 0;
+    padding: 1em;
 }
-
-@media (max-width: 1200px) {
-    .Board{
-        font-size: 0.6em;
-    }
+.BoardContainter{
+    display: block;
 }
-@media (max-width: 700px) {
-    .Board{
-        font-size: 0.5em;
-    }
+.page{
+    max-width: 960px;
+    margin: 0 auto;
+    height: 100vh   ;
+    background-color: rgb(36, 86, 129);
+    padding: 0;
 }

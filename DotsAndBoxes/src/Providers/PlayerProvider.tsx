@@ -1,6 +1,8 @@
 import React, { createContext, useReducer, ReactNode, useEffect, Dispatch } from 'react';
 
 type PlayerState = {
+    botOn: boolean;
+    startingPlayer: number;
     currentPlayer: number;
     playerOneScore: number;
     playerTwoScore: number;
@@ -10,9 +12,12 @@ type PlayerAction =
     | { type: 'switchPlayer' }
     | { type: 'incrementPlayerOneScore' }
     | { type: 'incrementPlayerTwoScore' }
+    | { type: 'switchBot' }
     | { type: 'resetScore' }
 
 const initialState: PlayerState = {
+    botOn: false,
+    startingPlayer: 1,
     currentPlayer: 1,
     playerOneScore: 0,
     playerTwoScore: 0,
@@ -26,8 +31,10 @@ function playerReducer(state: PlayerState, action: PlayerAction): PlayerState {
             return { ...state, playerOneScore: state.playerOneScore + 1 };
         case 'incrementPlayerTwoScore':
             return { ...state, playerTwoScore: state.playerTwoScore + 1 };
+        case 'switchBot':
+            return { ...state, botOn: state.botOn === false ? true : false};
         case 'resetScore':
-            return { ...state, playerOneScore: 0, playerTwoScore: 0, currentPlayer: 1};
+            return { ...state, playerOneScore: 0, playerTwoScore: 0, currentPlayer: state.startingPlayer, startingPlayer: state.startingPlayer == 1 ? 2 : 1};
 
         default:
             return state;
@@ -41,6 +48,7 @@ const PlayerProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {  
         console.log(`Player One Score: ${Playerstate.playerOneScore}`);
+        console.log(`Player Two Score: ${Playerstate.playerTwoScore}`);
     }, [Playerstate.playerOneScore, Playerstate.playerTwoScore]);
 
     useEffect(() => {

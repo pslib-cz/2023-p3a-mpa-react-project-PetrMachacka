@@ -8,8 +8,6 @@ export const Line = ({ y, x, direction }: { y: number, x: number, direction: boo
     const { Playerstate, Playerdispatch: playerDispatch } = useContext(PlayerContext);
     const BlockComplete = (items: number[][], y: number, x: number) => {
         var sides = Number(items[y][x] > 0) + Number(items[y][x + 1] > 0) + Number(items[y + 1][x] > 0) + Number(items[y - 1][x] > 0);
-        /*console.log(items[y][x] + "" + items[y][x + 1] + "" + items[y + 1][x] + "" + items[y - 1][x])
-        console.log(sides);*/
         if (sides === 3) { 
             return true;
         }
@@ -36,7 +34,7 @@ export const Line = ({ y, x, direction }: { y: number, x: number, direction: boo
     }
 
     const handleClick = () => {
-        if (state.items[y][x] === 0) 
+        if (state.items[y][x] === 0 && !(Playerstate.botOn && Playerstate.currentPlayer === 2)) 
         {
             dispatch({ type: "addToGrid", y, x, player: Playerstate.currentPlayer });
             const completesBlock = CheckCompleted(state.items, y, x, direction);
