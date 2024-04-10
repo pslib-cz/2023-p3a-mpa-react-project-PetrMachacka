@@ -14,6 +14,7 @@ type PlayerAction =
     | { type: 'incrementPlayerTwoScore' }
     | { type: 'switchBot' }
     | { type: 'resetScore' }
+    | { type: 'loadPlayer'; currentPlayer: number };
 
 const initialState: PlayerState = {
     botOn: false,
@@ -35,7 +36,8 @@ function playerReducer(state: PlayerState, action: PlayerAction): PlayerState {
             return { ...state, botOn: state.botOn === false ? true : false};
         case 'resetScore':
             return { ...state, playerOneScore: 0, playerTwoScore: 0, currentPlayer: state.startingPlayer, startingPlayer: state.startingPlayer == 1 ? 2 : 1};
-
+        case 'loadPlayer':
+            return { ...state, currentPlayer: action.currentPlayer };
         default:
             return state;
     }
@@ -52,8 +54,16 @@ const PlayerProvider = ({ children }: { children: ReactNode }) => {
     }, [Playerstate.playerOneScore, Playerstate.playerTwoScore]);
 
     useEffect(() => {
-        console.log(`Current Player: ${Playerstate.currentPlayer}`);
+        const savedCurrentPlayer = localStorage.getItem('currentPlayer');
+        if (savedCurrentPlayer) {
+            Playerdispatch({ type: 'loadPlayer', currentPlayer: JSON.parse(savedCurrentPlayer) });
+        }
+    }, []);
+    
+    useEffect(() => {
+        localStorage.setItem('currentPlayer', JSON.stringify(Playerstate.currentPlayer));
     }, [Playerstate.currentPlayer]);
+    
 
     return (
         <PlayerContext.Provider value={{ Playerstate, Playerdispatch }}>

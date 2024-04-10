@@ -10,7 +10,8 @@ const initialState = createInitialState(5);
 
 export type GridAction =
     | { type: "addToGrid"; y: number; x: number; player: number}
-    | { type: "resetGrid"; size: number};
+    | { type: "resetGrid"; size: number}
+    | { type: "loadGrid"; grid: number[][]};
 
 function reducer(state: Grid, action: GridAction): Grid {
     switch (action.type) {
@@ -22,6 +23,8 @@ function reducer(state: Grid, action: GridAction): Grid {
             return newGrid;
         case 'resetGrid':
             return createInitialState(action.size);
+        case 'loadGrid':
+            return { ...state, items: action.grid };
         default:
             throw new Error();
     }
@@ -39,8 +42,17 @@ export const Provider = ({ children }: { children: ReactNode }) => {
     const [size, setSize] = useState(5);
     const [state, dispatch] = useReducer(reducer, initialState);
     useEffect(() => {
-        //console.log(state.items);
+        const savedGrid = localStorage.getItem('grid');
+        if (savedGrid) {
+            console.log("gridSaved")
+            dispatch({ type: 'loadGrid', grid: JSON.parse(savedGrid) });
+        }
+    }, []);
+    useEffect(() => {
+        localStorage.setItem('grid', JSON.stringify(state.items));
+        console.log("saveGrid")
     }, [state.items])
+    
 
     return <ListContext.Provider value={{ state, dispatch, setSize , size}}>{children}</ListContext.Provider>;
 };
