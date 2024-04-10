@@ -3,8 +3,9 @@ import { ListContext } from '../Providers/GridProvider';
 import { PlayerContext } from '../Providers/PlayerProvider';
 
 const Bot = () => {
-    const { state, dispatch, size } = useContext(ListContext);
+    const { state, dispatch } = useContext(ListContext);
     const { Playerstate, Playerdispatch: playerDispatch } = useContext(PlayerContext);
+    const size = state.size;
     useEffect(() => {
         var bot: string[][] = new Array(size).fill(0).map(() => new Array(size).fill(""));
         if (Playerstate.currentPlayer === 2) {

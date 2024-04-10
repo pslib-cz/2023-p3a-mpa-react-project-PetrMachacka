@@ -8,22 +8,22 @@ import Bot from "./Bot";
 import { useMediaQuery } from 'react-responsive'
 
 export const Board = () => {
-    const { size } = useContext(ListContext); 
+    const { state } = useContext(ListContext); 
     const { Playerstate } = useContext(PlayerContext);
-    const Size = size;
+    const Size = state.size;
     const isDesktopOrLaptop = useMediaQuery({ minWidth: 1201 });
     const isBigTablet = useMediaQuery({ minWidth: 701, maxWidth: 1200 });
     const isTabletOrMobile = useMediaQuery({ maxWidth: 700 });
 
     let fontSize;
     if (isDesktopOrLaptop) {
-        fontSize = `${2 / size * 2 * 0.8}em`;
+        fontSize = `${2 / state.size * 2 * 0.8}em`;
         console.log('Desktop or Laptop');
     } else if (isBigTablet) {
-        fontSize = `${2 / size * 2 * 0.6}em`;
+        fontSize = `${2 / state.size * 2 * 0.6}em`;
         console.log('Big Tablet');
     } else if (isTabletOrMobile) {
-        fontSize = `${2 / size * 2 * 0.42}em`;
+        fontSize = `${2 / state.size * 2 * 0.42}em`;
         console.log('Tablet or Mobile');
     } else {
         console.log('Default');

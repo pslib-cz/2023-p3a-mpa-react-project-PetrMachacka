@@ -34,17 +34,32 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  padding: 1rem 1.75rem;
+  text-decoration: none;
+  width: 100%;
+  border: 0;
   cursor: pointer;
-  transition: border-color 0.25s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:hover {
+  background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
+}
+
+@media (min-width: 768px) {
+  .button-43 {
+    padding: 1rem 2rem;
+  }
 }
 button:hover {
   border-color: #646cff;
