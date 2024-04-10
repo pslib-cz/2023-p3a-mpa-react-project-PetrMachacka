@@ -17,7 +17,7 @@ export const Board = () => {
 
     let fontSize;
     if (isDesktopOrLaptop) {
-        fontSize = `${2 / size * 2}em`;
+        fontSize = `${2 / size * 2 * 0.8}em`;
         console.log('Desktop or Laptop');
     } else if (isBigTablet) {
         fontSize = `${2 / size * 2 * 0.6}em`;

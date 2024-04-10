@@ -3,7 +3,9 @@ import { useContext, useState, useRef } from 'react'
 import '../App.css'
 import { ListContext } from '../Providers/GridProvider';
 import { PlayerContext } from '../Providers/PlayerProvider'; 
-import BoardStyle from '../styles/Board.module.css'
+import PlayerIcon from '../assets/Player.svg';
+import PlayGroundStyle from '../styles/PlayGround.module.css'
+import BoardStyle from "../styles/Board.module.css";
 
 function PlayGround() {
     const input = useRef<HTMLInputElement>(null);
@@ -27,18 +29,25 @@ function PlayGround() {
         }
     };
     return (
-        <div className={BoardStyle.page}>
-            <div>
-                <span>Player1: {Playerstate.playerOneScore} </span>
-                <span>Player2: {Playerstate.playerTwoScore} </span>
-            </div>
+        <div className={PlayGroundStyle.page}>
+
             <label>BoardSize
             <input type="number" ref={input} defaultValue="5" min="2"/></label>
             <br/>
+            <div>
+                <button onClick={handleToggleBot}>
+                        {Playerstate.botOn ? "Turn off Bot" : "Turn on Bot"}
+                </button>
+            </div>
             <button onClick={handleReset}>Reset</button>
-            <button onClick={handleToggleBot}>
-                    {Playerstate.botOn ? "Turn off Bot" : "Turn on Bot"}
-            </button>
+            <div className={PlayGroundStyle.scoreShowContainer}>
+            <div className={PlayGroundStyle.scoreShow}>
+                <img src={PlayerIcon} className={`${PlayGroundStyle.Icon} ${BoardStyle.Player1text}`} alt="Player 1" />{Playerstate.playerOneScore}
+            </div>
+            <div className={PlayGroundStyle.scoreShow}>
+                <img src={PlayerIcon} className={`${PlayGroundStyle.Icon} ${BoardStyle.Player2text}`} alt="Player 2" />{Playerstate.playerTwoScore}
+            </div>
+        </div>
             <div>
                 <Board/>
             </div>
