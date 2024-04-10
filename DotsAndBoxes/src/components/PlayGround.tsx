@@ -5,6 +5,7 @@ import { ListContext } from '../Providers/GridProvider';
 import { PlayerContext } from '../Providers/PlayerProvider'; 
 import PlayerIcon from '../assets/Player.svg';
 import SettingsIcon from '../assets/Settings.svg';
+import BotIcon from '../assets/Bot.svg';
 import PlayGroundStyle from '../styles/PlayGround.module.css'
 import BoardStyle from "../styles/Board.module.css";
 import { Link } from 'react-router-dom';
@@ -31,7 +32,12 @@ function PlayGround() {
                     <img src={SettingsIcon} className={`${PlayGroundStyle.SettingsIcon}`}/>
                 </Link>
                 <div className={PlayGroundStyle.scoreShow}>
-                    <img src={PlayerIcon} className={`${PlayGroundStyle.Icon} ${BoardStyle.Player2text}`} alt="Player 2" />{Playerstate.playerTwoScore}
+                    {Playerstate.botOn ? (
+                        <img src={BotIcon} className={`${PlayGroundStyle.Icon} ${BoardStyle.BotText}`} alt="Bot" />
+                    ) : (
+                        <img src={PlayerIcon} className={`${PlayGroundStyle.Icon} ${BoardStyle.Player2text}`} alt="Player 2" />
+                    )}
+                    {Playerstate.playerTwoScore}
                 </div>
             </div>
             <div>
