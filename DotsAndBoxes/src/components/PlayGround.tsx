@@ -12,9 +12,13 @@ import { Link } from 'react-router-dom';
 
 
 function PlayGround() {
-    const { Playerstate } = useContext(PlayerContext);
-    const { state } = useContext(ListContext);
+    const { Playerstate, Playerdispatch } = useContext(PlayerContext);
+    const { state, dispatch } = useContext(ListContext);
 
+    const handleStartAgain = () => {
+        Playerdispatch({ type: 'resetScore' });
+        dispatch({ type: 'resetGrid', size: state.size});
+    };
 
     const allBlocksFilled = Playerstate.playerOneScore + Playerstate.playerTwoScore === state.size * state.size;
 
@@ -45,8 +49,8 @@ function PlayGround() {
             </div>
 
             {allBlocksFilled && (
-                <div className="winner-sign">
-                    {winner} wins!
+                <div className={PlayGroundStyle.startAgainButton} onClick={handleStartAgain}>
+                    Start Again
                 </div>
             )}
         </div>
