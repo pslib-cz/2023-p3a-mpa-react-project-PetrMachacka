@@ -4,6 +4,7 @@ import '../App.css'
 import { ListContext } from '../Providers/GridProvider';
 import { PlayerContext } from '../Providers/PlayerProvider'; 
 import PlayerIcon from '../assets/Player.svg';
+import PlayerRedIcon from '../assets/PlayerRed.svg';
 import SettingsIcon from '../assets/Settings.svg';
 import BotIcon from '../assets/Bot.svg';
 import PlayGroundStyle from '../styles/PlayGround.module.css'
@@ -30,7 +31,7 @@ function PlayGround() {
             
             <div className={PlayGroundStyle.scoreShowContainer}>
                 <div className={PlayGroundStyle.scoreShow}>
-                    <img src={PlayerIcon} className={`${PlayGroundStyle.Icon} ${BoardStyle.Player1text}`} alt="Player 1" />{Playerstate.playerOneScore}
+                    <img src={PlayerRedIcon} className={`${PlayGroundStyle.Icon} ${BoardStyle.Player1text}`} alt="Player 1" />{Playerstate.playerOneScore}
                 </div>
                 <Link to="settings" className="settings__button">
                     <img src={SettingsIcon} className={`${PlayGroundStyle.SettingsIcon}`}/>
