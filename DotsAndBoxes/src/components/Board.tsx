@@ -1,6 +1,6 @@
 import { Line } from "./Line";
 import { Block } from "./Block";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import BoardStyle from "../styles/Board.module.css";
 import { ListContext } from '../Providers/GridProvider'
 import { PlayerContext } from '../Providers/PlayerProvider'

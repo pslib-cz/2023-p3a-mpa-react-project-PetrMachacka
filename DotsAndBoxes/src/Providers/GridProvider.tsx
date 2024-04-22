@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useReducer, Dispatch, ReactNode } from 'react';
-import { Block } from '../components/Block';
+import React, { useEffect, useReducer, Dispatch, ReactNode } from 'react';
 
 export type Grid = { 
     items: number[][]

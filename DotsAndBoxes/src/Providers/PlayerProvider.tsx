@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, ReactNode, useEffect, Dispatch } from 'react';
+import { createContext, useReducer, ReactNode, useEffect, Dispatch } from 'react';
 
 type PlayerState = {
     botOn: boolean;

@@ -1,5 +1,5 @@
 // src/components/Settings.tsx
-import React, { useContext, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 import { PlayerContext } from '../Providers/PlayerProvider';
 import { ListContext } from '../Providers/GridProvider';
 import SettingsIcon from '../assets/Frame.svg';
@@ -8,7 +8,7 @@ import PlayGroundStyle from '../styles/PlayGround.module.css';
 
 const Settings = () => {
   const { Playerstate, Playerdispatch } = useContext(PlayerContext);
-  const { state , dispatch } = useContext(ListContext);
+  const { dispatch } = useContext(ListContext);
   const [size, setSize] = useState(5);
   const handleBoardSizeChange = (change: number) => {
     setSize(size + change);

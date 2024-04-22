@@ -1,5 +1,5 @@
 import { Board } from '../components/Board'
-import { useContext, useState, useRef } from 'react' 
+import { useContext} from 'react' 
 import '../App.css'
 import { ListContext } from '../Providers/GridProvider';
 import { PlayerContext } from '../Providers/PlayerProvider'; 
