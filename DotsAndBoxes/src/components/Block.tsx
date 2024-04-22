@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ListContext } from '../Providers/GridProvider';
 import BoardStyle from "../styles/Board.module.css";
 import { PlayerContext } from '../Providers/PlayerProvider';

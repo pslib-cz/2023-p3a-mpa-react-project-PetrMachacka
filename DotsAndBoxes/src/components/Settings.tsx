@@ -2,6 +2,7 @@
 import React, { useContext, useRef, useState } from 'react';
 import { PlayerContext } from '../Providers/PlayerProvider';
 import { ListContext } from '../Providers/GridProvider';
+import SettingsIcon from '../assets/Frame.svg';
 import { Link } from 'react-router-dom';
 import PlayGroundStyle from '../styles/PlayGround.module.css';
 
@@ -34,7 +35,8 @@ const Settings = () => {
       <button onClick={handleBotToggle}>
         {Playerstate.botOn ? "Turn off Bot" : "Turn on Bot"}
       </button>
-      <Link to="/" className="settings__button">{"nice"}
+      <Link to="/" className="settingsIcon">
+        <img src={SettingsIcon} className={`${PlayGroundStyle.SettingsIcon}`}/>
       </Link>
     </div>
   );

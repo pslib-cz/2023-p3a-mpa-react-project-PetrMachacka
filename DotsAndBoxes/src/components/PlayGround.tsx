@@ -26,14 +26,12 @@ function PlayGround() {
     const winner = Playerstate.playerOneScore > Playerstate.playerTwoScore ? 'Player 1' : 'Player 2';
 
     return (
-        <div className={PlayGroundStyle.page}>
-            
-            
+        <div>
             <div className={PlayGroundStyle.scoreShowContainer}>
                 <div className={PlayGroundStyle.scoreShow}>
                     <img src={PlayerRedIcon} className={`${PlayGroundStyle.Icon} ${BoardStyle.Player1text}`} alt="Player 1" />{Playerstate.playerOneScore}
                 </div>
-                <Link to="settings" className="settings__button">
+                <Link to="settings" className="settingsIcon">
                     <img src={SettingsIcon} className={`${PlayGroundStyle.SettingsIcon}`}/>
                 </Link>
                 <div className={PlayGroundStyle.scoreShow}>
@@ -50,9 +48,12 @@ function PlayGround() {
             </div>
 
             {allBlocksFilled && (
-                <div className={PlayGroundStyle.startAgainButton} onClick={handleStartAgain}>
-                    Start Again
-                </div>
+                <>
+                    <div className={PlayGroundStyle.startAgainButton} onClick={handleStartAgain}>
+                        Start Again
+                    </div>
+                    <div>Winner: {winner}</div>
+                </>
             )}
         </div>
     )

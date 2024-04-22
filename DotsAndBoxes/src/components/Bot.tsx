@@ -70,7 +70,6 @@ const Bot = () => {
                     let letters = ["L", "R", "B", "T"];
                     let remainingLetters = letters.filter(letter => !bot[i][j].includes(letter));
     
-                    // Find the side that, when filled, would result in a block with the fewest sides filled
                     let minSide = 4;
                     let minSides: string[] = [];
                     let chosenLetter = null;

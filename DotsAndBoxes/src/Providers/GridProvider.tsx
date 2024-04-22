@@ -25,10 +25,9 @@ function reducer(state: Grid, action: GridAction): Grid {
             return newGrid;
         case 'resetGrid':
             return createInitialState(action.size);
+                                                                                                                                    
         case 'loadGrid':
             return { ...state, items: action.grid };
-        case 'setGridSize':
-            return {...state, size: action.size}
         default:
             throw new Error();
     }
