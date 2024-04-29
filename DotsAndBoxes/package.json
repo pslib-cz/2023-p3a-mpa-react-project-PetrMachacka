@@ -6,11 +6,11 @@
   "homepage": "htttps://pslib-cz.github.io/2023-p3a-mpa-react-project-PetrMachacka",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build --base/dotsandboxes/",
+    "build": "vite build --base /DotsAndBoxes/",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "deploy": "vite build && gh-pages -d dist"
-  },
+      },
   "dependencies": {
     "gh-pages": "^6.1.1",
     "react": "^18.2.0",
