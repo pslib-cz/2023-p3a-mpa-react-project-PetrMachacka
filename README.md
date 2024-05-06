@@ -1,5 +1,7 @@
 # Dots and Boxes
 
+https://pslib-cz.github.io/2023-p3a-mpa-react-project-PetrMachacka/
+
 ## Téma
 
 Pravidla jsou následující:
