@@ -1,0 +1,64 @@
+.scoreShowContainer {
+    display: flex;
+    text-align: center;
+    justify-content: space-between; 
+    margin: 1em 0;
+}
+
+.scoreShow {
+    padding: 0.2em 0.5em;
+    background-color: aliceblue;
+    color: #03045E;
+    border-radius: 10px;
+    display: flex;
+    gap: 1em;
+    font-size: 1.5em;
+    margin: 0.5em 0;
+}
+.Icon{
+    width: 1.5em;
+    text-align: center;
+}
+.SettingsIcon{
+    width: 3em;
+}
+
+.AddButtonContainer{
+    display: flex;
+    gap: 1em;
+    margin: 1em 0;
+    align-items: center;
+}
+.startAgainButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1em;
+    font-size: 1.5em;
+    background-color: #0077B6;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+.SettingsButton{
+    margin: 0.5em 0;
+}
+.page{
+    font-size: 1.5em;
+}
+.SettingsIconContainer{
+    display: flex;
+    align-items: center;
+}
+@media screen and (max-width: 500px){
+    .page{
+        padding: 0;
+    }
+    .scoreShow{
+        font-size: 1em;
+    }
+}

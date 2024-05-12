@@ -1,0 +1,19 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+html > *{
+  margin: 0;
+  background-color: #0077B6;
+}
+body {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+}

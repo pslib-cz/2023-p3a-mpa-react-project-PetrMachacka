@@ -1,8 +1,17 @@
-# Název mého projektu, programu, hry...
+# Dots and Boxes
+
+https://pslib-cz.github.io/2023-p3a-mpa-react-project-PetrMachacka/
 
 ## Téma
 
-Tady bude krátký a úderný popis o účelu, významu, funkcionalitě...
+Pravidla jsou následující:
+
+- Hráči se střídají a spojují dva vodorovně nebo svisle sousedící body čárou.
+- Každý hráč, který uzavře čtvrtou stranu čtverce o velikosti 1x1 bod, získá jeden bod a smí táhnout znovu.
+- Hra končí, když jsou všechny čáry nakresleny a čtverce jsou obsazeny.
+- Hráč s nejvíce body vyhrává.
+  
+[komplexnější vysvětlení hry](https://en.wikipedia.org/wiki/Dots_and_boxes)
 
 ## Odkazy pro vývoj
 
