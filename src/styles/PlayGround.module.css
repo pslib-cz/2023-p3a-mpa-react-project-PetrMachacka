@@ -38,6 +38,9 @@
     color: white;
     cursor: pointer;
   }
+.SettingsButton{
+    margin: 0.5em 0;
+}
 @media screen and (max-width: 500px){
     .page{
         padding: 0;

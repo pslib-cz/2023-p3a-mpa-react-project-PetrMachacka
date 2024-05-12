@@ -11,7 +11,9 @@ const Settings = () => {
   const { dispatch } = useContext(ListContext);
   const [size, setSize] = useState(5);
   const handleBoardSizeChange = (change: number) => {
-    setSize(size + change);
+    if(size + change > 0){
+      setSize(size + change);
+    }
   };
 
   const handleReset = () => {
@@ -31,8 +33,8 @@ const Settings = () => {
         <span>{size}</span>
         <button className={PlayGroundStyle.AddButton} onClick={() => handleBoardSizeChange(1)}>+</button>
       </div>
-      <button onClick={handleReset}>Reset Game</button>
-      <button onClick={handleBotToggle}>
+      <button className={PlayGroundStyle.SettingsButton} onClick={handleReset}>Reset Game</button>
+      <button className={PlayGroundStyle.SettingsButton} onClick={handleBotToggle}>
         {Playerstate.botOn ? "Turn off Bot" : "Turn on Bot"}
       </button>
       <Link to="/" className="settingsIcon">
