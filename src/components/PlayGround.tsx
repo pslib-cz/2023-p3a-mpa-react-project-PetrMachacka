@@ -31,7 +31,7 @@ function PlayGround() {
                 <div className={PlayGroundStyle.scoreShow}>
                     <img src={PlayerRedIcon} className={`${PlayGroundStyle.Icon} ${BoardStyle.Player1text}`} alt="Player 1" />{Playerstate.playerOneScore}
                 </div>
-                <Link to="settings" className="settingsIcon">
+                <Link to="settings" className={PlayGroundStyle.SettingsIconContainer}>
                     <img src={SettingsIcon} className={`${PlayGroundStyle.SettingsIcon}`}/>
                 </Link>
                 <div className={PlayGroundStyle.scoreShow}>
@@ -50,9 +50,15 @@ function PlayGround() {
             {allBlocksFilled && (
                 <>
                     <div className={PlayGroundStyle.startAgainButton} onClick={handleStartAgain}>
+                        <div>
+                            {winner == "Player 1" ? (
+                                <img src={PlayerRedIcon} className={PlayGroundStyle.Icon} alt="Player 1" />
+                            ) : (
+                                <img src={PlayerIcon} className={PlayGroundStyle.Icon} alt="Player 2" />
+                            )}
+                        </div>
                         Start Again
                     </div>
-                    <div>Winner: {winner}</div>
                 </>
             )}
         </div>
